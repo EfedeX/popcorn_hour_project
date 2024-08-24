@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>LoginWindow</string>
+   <string>Login into Popcorn hour!</string>
   </property>
   <property name="toolButtonStyle">
    <enum>Qt::ToolButtonIconOnly</enum>
@@ -41,6 +41,26 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>Corbel Light</family>
+         <pointsize>25</pointsize>
+         <kerning>true</kerning>
+         <fontweight>Light</fontweight>
+        </font>
+       </property>
+       <property name="acceptDrops">
+        <bool>false</bool>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
        <property name="text">
         <string>Login</string>
        </property>
@@ -133,12 +153,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuLog_in">
-    <property name="title">
-     <string>Log in</string>
-    </property>
-   </widget>
-   <addaction name="menuLog_in"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

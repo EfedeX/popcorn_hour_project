@@ -1,8 +1,6 @@
 {
     "files": [
         "mainwindow.py",
-        "form.ui",
-        "backend/database.py",
-        "backend/main.py"
+        "form.ui"
     ]
 }
