@@ -2,8 +2,8 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
-from .database import create_db_and_tables, get_session
-from .routes import users
+from backend.database import create_db_and_tables, get_session
+from backend.routes import users
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
