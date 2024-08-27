@@ -1,6 +1,15 @@
 {
     "files": [
         "mainwindow.py",
-        "form.ui"
+        "form.ui",
+        "backend/models/user.py",
+        "backend/routes/users.py",
+        "backend/utils.py",
+        "scripts/create_moderator.py",
+        ".env",
+        "backend/models/movie.py",
+        "backend/models/comment.py",
+        "backend/models/image.py",
+        "backend/models/rating.py"
     ]
 }

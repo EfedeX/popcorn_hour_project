@@ -16,26 +16,30 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QLabel, QMainWindow,
-    QMenuBar, QPushButton, QRadioButton, QSizePolicy,
-    QStatusBar, QTextBrowser, QTextEdit, QVBoxLayout,
-    QWidget)
+    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
+    QTextBrowser, QTextEdit, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(360, 450)
-        MainWindow.setMinimumSize(QSize(360, 450))
-        MainWindow.setMaximumSize(QSize(360, 450))
+        MainWindow.resize(320, 370)
+        MainWindow.setMinimumSize(QSize(320, 370))
+        MainWindow.setMaximumSize(QSize(320, 370))
         MainWindow.setToolButtonStyle(Qt.ToolButtonIconOnly)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayoutWidget = QWidget(self.centralwidget)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(40, 0, 281, 401))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 0, 301, 361))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalSpacer_2 = QSpacerItem(10, 20, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout.addItem(self.verticalSpacer_2)
+
         self.label = QLabel(self.verticalLayoutWidget)
         self.label.setObjectName(u"label")
         font = QFont()
@@ -48,16 +52,24 @@ class Ui_MainWindow(object):
         self.label.setAutoFillBackground(False)
         self.label.setFrameShape(QFrame.NoFrame)
         self.label.setFrameShadow(QFrame.Plain)
+        self.label.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout.addWidget(self.label)
 
+        self.verticalSpacer = QSpacerItem(20, 25, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+
+        self.verticalLayout.addItem(self.verticalSpacer)
+
         self.textEdit = QTextEdit(self.verticalLayoutWidget)
         self.textEdit.setObjectName(u"textEdit")
+        self.textEdit.setMinimumSize(QSize(20, 30))
+        self.textEdit.setMaximumSize(QSize(16777215, 30))
 
         self.verticalLayout.addWidget(self.textEdit)
 
         self.textEdit_2 = QTextEdit(self.verticalLayoutWidget)
         self.textEdit_2.setObjectName(u"textEdit_2")
+        self.textEdit_2.setMaximumSize(QSize(16777215, 30))
 
         self.verticalLayout.addWidget(self.textEdit_2)
 
@@ -71,6 +83,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.pushButton)
 
+        self.verticalSpacer_3 = QSpacerItem(20, 90, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout.addItem(self.verticalSpacer_3)
+
         self.label_2 = QLabel(self.verticalLayoutWidget)
         self.label_2.setObjectName(u"label_2")
 
@@ -79,18 +95,11 @@ class Ui_MainWindow(object):
         self.textBrowser = QTextBrowser(self.verticalLayoutWidget)
         self.textBrowser.setObjectName(u"textBrowser")
         self.textBrowser.setMinimumSize(QSize(0, 30))
-        self.textBrowser.setMaximumSize(QSize(80, 50))
+        self.textBrowser.setMaximumSize(QSize(80, 30))
 
         self.verticalLayout.addWidget(self.textBrowser)
 
         MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QMenuBar(MainWindow)
-        self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 360, 21))
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QStatusBar(MainWindow)
-        self.statusbar.setObjectName(u"statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
 

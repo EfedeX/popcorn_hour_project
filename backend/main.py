@@ -1,4 +1,12 @@
-# This Python file uses the following encoding: utf-8
+from fastapi import FastAPI
 
-# if __name__ == "__main__":
-#     pass
+from .database import create_db_and_tables
+from .routes import users
+
+
+app = FastAPI()
+app.include_router(users.router)
+
+@app.on_event("startup")
+def on_startup():
+    create_db_and_tables()
