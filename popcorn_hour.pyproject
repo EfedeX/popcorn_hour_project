@@ -11,6 +11,10 @@
         "backend/models/comment.py",
         "backend/models/image.py",
         "backend/models/rating.py",
-        "main.py"
+        "main.py",
+        "backend/routes/login.py",
+        "backend/__init__.py",
+        "backend/models/__init__.py",
+        "backend/routes/__init__.py"
     ]
 }
