@@ -7,6 +7,7 @@ from ..models.user import User, UserCreate
 from ..utils import get_password_hash
 from ..database import get_session
 
+
 router = APIRouter(
     prefix="/users"
 )
@@ -28,16 +29,14 @@ def create_user(user: UserCreate,
         user_type=user.user_type
     )
     session.add(new_user)
-    session.commit() # to create primary_key
-    session.refresh(new_user) # to save it
+    session.commit()
+    session.refresh(new_user)
     return new_user
-
 
 @router.get("/", response_model=List[User])
 def list_all_users(session: Session = Depends(get_session)):
-    return session.execute(select(User)).all()
-    # for user in users:
-    #    print(users)
+    users = session.execute(select(User)).scalars().all()  # Use .scalars() to return actual records, not a list of rows
+    return users
 
 @router.get("/{email}", response_model=User)
 def list_user(email: str, session: Session=Depends(get_session)):

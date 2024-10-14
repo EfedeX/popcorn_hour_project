@@ -31,7 +31,7 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.verticalLayoutWidget = QWidget(self.centralwidget)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(10, 0, 301, 361))
+        self.verticalLayoutWidget.setGeometry(QRect(10, 0, 301, 363))
         self.verticalLayout = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setSpacing(10)
         self.verticalLayout.setObjectName(u"verticalLayout")
@@ -60,28 +60,29 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
-        self.textEdit = QTextEdit(self.verticalLayoutWidget)
-        self.textEdit.setObjectName(u"textEdit")
-        self.textEdit.setMinimumSize(QSize(20, 30))
-        self.textEdit.setMaximumSize(QSize(16777215, 30))
+        self.email = QTextEdit(self.verticalLayoutWidget)
+        self.email.setObjectName(u"email")
+        self.email.setMinimumSize(QSize(20, 30))
+        self.email.setMaximumSize(QSize(16777215, 30))
 
-        self.verticalLayout.addWidget(self.textEdit)
+        self.verticalLayout.addWidget(self.email)
 
-        self.textEdit_2 = QTextEdit(self.verticalLayoutWidget)
-        self.textEdit_2.setObjectName(u"textEdit_2")
-        self.textEdit_2.setMaximumSize(QSize(16777215, 30))
+        self.password = QTextEdit(self.verticalLayoutWidget)
+        self.password.setObjectName(u"password")
+        self.password.setMaximumSize(QSize(16777215, 30))
 
-        self.verticalLayout.addWidget(self.textEdit_2)
+        self.verticalLayout.addWidget(self.password)
 
         self.radioButton = QRadioButton(self.verticalLayoutWidget)
         self.radioButton.setObjectName(u"radioButton")
 
         self.verticalLayout.addWidget(self.radioButton)
 
-        self.pushButton = QPushButton(self.verticalLayoutWidget)
-        self.pushButton.setObjectName(u"pushButton")
+        self.loginButton = QPushButton(self.verticalLayoutWidget)
+        self.loginButton.setObjectName(u"loginButton")
+        self.loginButton.setCheckable(False)
 
-        self.verticalLayout.addWidget(self.pushButton)
+        self.verticalLayout.addWidget(self.loginButton)
 
         self.verticalSpacer_3 = QSpacerItem(20, 90, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -109,24 +110,28 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Login into Popcorn hour!", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"Login", None))
-        self.textEdit.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.email.setMarkdown("")
+        self.email.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Email</p></body></html>", None))
-        self.textEdit_2.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+        self.email.setPlaceholderText(QCoreApplication.translate("MainWindow", u"youremail@email.com", None))
+        self.password.setMarkdown("")
+        self.password.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "hr { height: 1px; border-width: 0; }\n"
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Password</p></body></html>", None))
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+        self.password.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Password", None))
         self.radioButton.setText(QCoreApplication.translate("MainWindow", u"Show password", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Sign in", None))
+        self.loginButton.setText(QCoreApplication.translate("MainWindow", u"Sign in", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"Don't have an account?", None))
         self.textBrowser.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
