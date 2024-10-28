@@ -8,7 +8,7 @@ print(dotenv_path)
 load_dotenv(dotenv_path)
 
 DATABASE_URL = os.getenv('DATABASE_URL')
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine("sqlite:///./test.db", echo=True) # change to DATABASE_URL later
 
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)

@@ -3,13 +3,14 @@ from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 
-from ..models.user import User, UserCreate
+from ..models.user import User, UserCreate, UserRead
 from ..utils import get_password_hash
 from ..database import get_session
 
 
 router = APIRouter(
-    prefix="/users"
+    prefix="/users",
+    tags=["users"]
 )
 
 @router.post("/", response_model=User)
@@ -33,18 +34,21 @@ def create_user(user: UserCreate,
     session.refresh(new_user)
     return new_user
 
-@router.get("/", response_model=List[User])
+@router.get("/", response_model=List[UserRead])
 def list_all_users(session: Session = Depends(get_session)):
-    users = session.execute(select(User)).scalars().all()  # Use .scalars() to return actual records, not a list of rows
+    users = session.execute(select(User)).scalars().all()
     return users
 
-@router.get("/{email}", response_model=User)
+@router.get("/{email}", response_model=UserRead)
 def list_user(email: str, session: Session=Depends(get_session)):
     statement = select(User).where(User.email == email)
-    return session.execute(statement)
+    result = session.execute(statement).scalar_one_or_none()
+    if result is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return result
 
 @router.delete("/{email}")
-def list_user(email: str, session: Session=Depends(get_session)):
+def delete_user(email: str, session: Session=Depends(get_session)):
     statement = select(User).where(User.email == email)
     db_user = session.execute(statement)
     if not db_user:

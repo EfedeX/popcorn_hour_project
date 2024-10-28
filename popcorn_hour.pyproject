@@ -16,6 +16,10 @@
         "backend/__init__.py",
         "backend/models/__init__.py",
         "backend/routes/__init__.py",
-        "app.ui"
+        "app.ui",
+        "backend/models/director.py",
+        "backend/routes/directors.py",
+        "backend/routes/movies.py",
+        "backend/auth.py"
     ]
 }

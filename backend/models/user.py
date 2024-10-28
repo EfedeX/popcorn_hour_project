@@ -1,9 +1,9 @@
 from datetime import datetime
 from enum import Enum
-from typing import Optional
+from typing import Optional, List
 
-from sqlmodel import SQLModel, Field
-from pydantic import EmailStr
+from sqlmodel import SQLModel, Field, Relationship
+from pydantic import EmailStr, BaseModel
 
 
 class UserType(str, Enum):
@@ -22,8 +22,16 @@ class User(UserBase, table=True):
     email: EmailStr = Field(unique=True, index=True)
     user_type: UserType = Field(default=UserType.standard)
     hashed_password: str
+    movies: List["Movie"] = Relationship(back_populates="added_by")
+    ratings: List["Rating"] = Relationship(back_populates="user")
 
 class UserCreate(UserBase):
     email: EmailStr
     password: str
     user_type: UserType = Field(default=UserType.standard)
+
+class UserRead(UserBase):
+    id: int
+    email: EmailStr
+    user_type: UserType
+
