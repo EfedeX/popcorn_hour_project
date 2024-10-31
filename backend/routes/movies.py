@@ -61,20 +61,24 @@ def create_movie(
     session.refresh(new_movie)
     return new_movie
 
-@router.get("/{movie_id}", response_model=Movie)
+@router.get("/{movie_id}", response_model=MovieRead)
 def get_movie(
     movie_id: int,
     session: Session = Depends(get_session)
 ):
     statement = select(Movie).where(Movie.id == movie_id)
-    return session.execute(statement)
+    result = session.execute(statement).scalar_one_or_none()
+    if result is None:
+        raise HTTPException(status_code=404, detail="Movie not found")
+    return result
 
 # endpoints para ratings
 @router.post("/{movie_id}/rate", response_model=RatingRead)
 def rate_movie(
     movie_id: int,
     rating: RatingCreate,
-    session: Session = Depends(get_session)
+    session: Session = Depends(get_session),
+    current_user: User = Depends(get_current_user)
 ):
     movie = session.get(Movie, movie_id)
     if not movie:
@@ -94,7 +98,7 @@ def rate_movie(
 
     db_rating = Rating(
         movie_id=movie_id,
-        user_id=1, ## CHAAANGE THIIIIIS
+        user_id=current_user.id,
         score=rating.score
     )
     session.add(db_rating)
