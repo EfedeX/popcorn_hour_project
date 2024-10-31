@@ -10,6 +10,8 @@ from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox
 #     pyside2-uic form.ui -o ui_form.py
 from ui_form import Ui_MainWindow
 from signup import Ui_SignupWindow
+from app_window import MainWindow as AppMainWindow
+
 
 base_url = "http://127.0.0.1:8000"
 
@@ -23,24 +25,32 @@ class MainWindow(QMainWindow):
 
     def login(self):
         email = self.ui.email.toPlainText()
-        password = self.ui.password.toPlainText()
+        password = self.ui.password.text()
         try:
             response = requests.post(
-                f"{base_url}/login",
-                json={"email": email, "password": password}
+                f"{base_url}/token",
+                data={"username": email, "password": password}
             )
             if response.status_code == 200:
                 data = response.json()
-                QMessageBox.information(self, "Success", f"Welcome: {data['email']}!")
+                token = data.get("access_token")
+                user_type = data.get("user_type")
+                if token:
+                    QMessageBox.information(self, "Success", f"Welcome: {email}!")
+                    self.app_window = AppMainWindow(token=token, user_type=user_type)
+                    self.app_window.show()
+                    self.close()
+
+                else:
+                    QMessageBox.warning(self, "Error", "Failed to retrieve token. Please try again.")
             else:
-                QMessageBox.warning(self, "Error", "Invalid credentials. Please try again")
+                QMessageBox.warning(self, "Error", "Invalid credentials. Please try again.")
         except requests.exceptions.RequestException as e:
             QMessageBox.critical(self, "Error", f"Failed to connect to server: {e}")
 
     def signup(self):
         self.signup_window = SignupWindow()
         self.signup_window.show()
-
 
 
 class SignupWindow(QMainWindow):
@@ -80,8 +90,9 @@ class SignupWindow(QMainWindow):
         else:
             QMessageBox.warning(self, "Error", "Passwords don't match!")
 
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    widget = MainWindow()
-    widget.show()
+    login_window = MainWindow()
+    login_window.show()
     sys.exit(app.exec())

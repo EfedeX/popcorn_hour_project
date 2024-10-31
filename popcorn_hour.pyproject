@@ -20,6 +20,7 @@
         "backend/models/director.py",
         "backend/routes/directors.py",
         "backend/routes/movies.py",
-        "backend/auth.py"
+        "backend/auth.py",
+        "app_window.py"
     ]
 }

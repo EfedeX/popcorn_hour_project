@@ -147,3 +147,8 @@ def get_movie_average_rating(
         "average_rating": movie.average_rating,
         "total_ratings": len(movie.ratings)
     }
+
+@router.get("/", response_model=List[MovieRead])
+def list_movies(session: Session = Depends(get_session)):
+    movies = session.exec(select(Movie)).all()
+    return movies

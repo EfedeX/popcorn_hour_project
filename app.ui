@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>551</height>
+    <height>611</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListWidget" name="listWidget">
+   <widget class="QListWidget" name="conversation_list">
     <property name="geometry">
      <rect>
       <x>530</x>
@@ -23,23 +23,8 @@
       <height>421</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string>awerawer</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>wtwetewr4t</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>qweqweqwe</string>
-     </property>
-    </item>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="comment_button">
     <property name="geometry">
      <rect>
       <x>620</x>
@@ -52,18 +37,21 @@
      <string>Comment</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
       <width>503</width>
-      <height>453</height>
+      <height>531</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
+     <property name="spacing">
+      <number>10</number>
+     </property>
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="image">
        <property name="minimumSize">
         <size>
          <width>501</width>
@@ -88,37 +76,41 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
+      <widget class="QPushButton" name="upload_button">
+       <property name="maximumSize">
+        <size>
+         <width>500</width>
+         <height>30</height>
+        </size>
+       </property>
        <property name="text">
         <string>Upload new movie picture</string>
        </property>
       </widget>
      </item>
-    </layout>
-   </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>480</y>
-      <width>168</width>
-      <height>26</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>Previous</string>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="spacing">
+        <number>20</number>
        </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="text">
-        <string>Next</string>
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
        </property>
-      </widget>
+       <item>
+        <widget class="QPushButton" name="previous_button">
+         <property name="text">
+          <string>Previous</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="next_button">
+         <property name="text">
+          <string>Next</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>
@@ -129,7 +121,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
