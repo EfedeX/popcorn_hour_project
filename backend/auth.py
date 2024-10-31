@@ -1,13 +1,19 @@
+import os
+
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
 from sqlmodel import Session, select
+from dotenv import load_dotenv
 
 from .database import get_session
 from .models.user import User
 
-SECRET_KEY = "hybridge"
+
+dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
+load_dotenv(dotenv_path)
+SECRET_KEY = os.getenv('SECRET_KEY')
 ALGORITHM = "HS256"
 
 def create_access_token(data: dict):
