@@ -56,8 +56,3 @@ def delete_user(email: str, session: Session=Depends(get_session)):
     session.delete(db_user)
     session.commit()
     session.refresh()
-
-
-# router.patch() partial update
-# router.put() full update
-# router.delete() session.delete(user) instead of add

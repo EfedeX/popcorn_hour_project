@@ -89,14 +89,6 @@ def rate_movie(
         .where(Rating.movie_id == movie_id)
     ).first()
 
-    # if existing_rating:
-    #     existing_rating.score = rating.score
-    #     existing_rating.rated_at = datetime.utcnow()
-    #     session.add(existing_rating)
-    #     session.commit()
-    #     session.refresh(existing_rating)
-    #     return existing_rating
-
     db_rating = Rating(
         movie_id=movie_id,
         user_id=current_user.id,

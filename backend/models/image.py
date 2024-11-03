@@ -1,5 +1,5 @@
 from sqlmodel import SQLModel, Field, Relationship
-from sqlalchemy import Column, ForeignKey # , LargeBinary
+from sqlalchemy import Column, ForeignKey
 from sqlalchemy.dialects.mysql import LONGBLOB
 from typing import Optional
 

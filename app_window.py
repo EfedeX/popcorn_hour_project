@@ -109,7 +109,7 @@ class MainWindow(QMainWindow):
         self.ui.movie_title.setText(movie["title"])
         self.ui.movie_director.setText(f"Director: {movie['director']['name']}")
         self.ui.average_rating.setText(f"Average: {movie['average_rating']:.1f} ★")
-        # self.update_user_rating(movie["id"])
+
         try:
             headers = {"Authorization": f"Bearer {self.token}"}
             movie_id = movie["id"]
@@ -205,17 +205,3 @@ class MainWindow(QMainWindow):
         if self.movies and self.current_movie_index < len(self.movies) - 1:
             self.current_movie_index += 1
             self.show_current_movie()
-
-    def update_user_rating(self, movie_id):
-        try:
-            headers = {"Authorization": f"Bearer {self.token}"}
-            response = requests.get(
-                f"http://localhost:8000/movies/{movie_id}/user-rating",
-                headers=headers
-            )
-            if response.status_code == 200:
-                rating = response.json()["rating"]
-                for i, star in enumerate(self.ui.rating_stars):
-                    star.setChecked(i < rating)
-        except Exception:
-            pass

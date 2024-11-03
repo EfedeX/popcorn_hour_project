@@ -8,7 +8,6 @@
         "scripts/create_moderator.py",
         ".env",
         "backend/models/movie.py",
-        "backend/models/comment.py",
         "backend/models/image.py",
         "backend/models/rating.py",
         "main.py",
