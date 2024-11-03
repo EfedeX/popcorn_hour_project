@@ -15,7 +15,7 @@ PopcornHour is a desktop app for rating movies, with roles for moderators and us
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/Efedex/popcornhour.git
+git clone https://github.com/Efedex/popcorn_hour_project.git
 cd popcornhour
 ```
 
