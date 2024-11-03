@@ -2,8 +2,10 @@ from datetime import date
 from typing import Optional, List
 
 from sqlmodel import SQLModel, Field, Relationship
+from pydantic import validator
 
 from .director import DirectorCreate, DirectorBase
+from .image import Image
 
 class MovieBase(SQLModel):
     title: str
@@ -18,6 +20,7 @@ class Movie(MovieBase, table=True):
     director_id: int = Field(foreign_key="director.id")
     director: Optional["Director"] = Relationship(back_populates="movies")
     ratings: List["Rating"] = Relationship(back_populates="movie")
+    image: Optional["Image"] = Relationship(back_populates="movie")
 
     @property
     def average_rating(self) -> float:
@@ -39,3 +42,11 @@ class MovieRead(MovieBase):
 
     class Config:
         from_attributes = True
+
+    image_url: Optional[str] = None
+
+    @validator("image_url", pre=True)
+    def set_image_url(cls, v, values):
+        if "id" in values:
+            return f"http://localhost:8000/images/{values[id]}"
+        return None

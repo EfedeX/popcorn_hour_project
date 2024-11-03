@@ -1,9 +1,22 @@
-from sqlmodel import SQLModel, Field
-from sqlalchemy import Column
-from sqlalchemy.dialects.postgresql import BYTEA
+from sqlmodel import SQLModel, Field, Relationship
+from sqlalchemy import Column, ForeignKey # , LargeBinary
+from sqlalchemy.dialects.mysql import LONGBLOB
+from typing import Optional
+
 
 
 class Image(SQLModel, table=True):
-    id: int = Field(default=None, primary_key=True)
+    id: Optional[int] = Field(default=None, primary_key=True)
     movie_id: int = Field(foreign_key="movie.id")
-    image_data: bytes | None = Field(sa_column=Column(BYTEA), default=None)
+    movie: Optional["Movie"] = Relationship(back_populates="image")
+    image_data: Optional[bytes] = Field(sa_column=Column(LONGBLOB), default=None)
+    # image_data: Optional[bytes] = Field(
+    #     sa_column=Column(LargeBinary), # only for sqlite AKA testing
+    #     default=None
+    # )
+    content_type: Optional[str] = Field(default="image/jpeg")
+
+class ImageRead(SQLModel):
+    id: int
+    movie_id: int
+    content_type: Optional[str]

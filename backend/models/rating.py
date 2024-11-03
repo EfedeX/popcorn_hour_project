@@ -19,8 +19,8 @@ class Rating(RatingBase, table=True):
         UniqueConstraint("user_id", "movie_id", name="unique_user_movie_rating"),
     )
 
-class RatingCreate(RatingBase):
-    movie_id: int
+class RatingCreate(SQLModel):
+    score: int = Field(ge=1, le=5)
 
 class RatingRead(RatingBase):
     id: int

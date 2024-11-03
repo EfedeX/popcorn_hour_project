@@ -21,6 +21,8 @@
         "backend/routes/directors.py",
         "backend/routes/movies.py",
         "backend/auth.py",
-        "app_window.py"
+        "app_window.py",
+        "backend/routes/images.py",
+        "readme.md"
     ]
 }

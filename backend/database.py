@@ -7,7 +7,7 @@ dotenv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), '.env')
 load_dotenv(dotenv_path)
 
 DATABASE_URL = os.getenv('DATABASE_URL')
-engine = create_engine("sqlite:///./test.db", echo=True) # change to DATABASE_URL later
+engine = create_engine(DATABASE_URL, echo=True)
 
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)

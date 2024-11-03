@@ -5,6 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 from sqlalchemy.orm import selectinload
 from sqlalchemy import func
+from sqlalchemy.exc import IntegrityError
 
 from ..database import get_session
 from ..auth import get_current_user
@@ -88,13 +89,13 @@ def rate_movie(
         .where(Rating.movie_id == movie_id)
     ).first()
 
-    if existing_rating:
-        existing_rating.score = rating.score
-        existing_rating.rated_at = datetime.utcnow()
-        session.add(existing_rating)
-        session.commit()
-        session.refresh(existing_rating)
-        return existing_rating
+    # if existing_rating:
+    #     existing_rating.score = rating.score
+    #     existing_rating.rated_at = datetime.utcnow()
+    #     session.add(existing_rating)
+    #     session.commit()
+    #     session.refresh(existing_rating)
+    #     return existing_rating
 
     db_rating = Rating(
         movie_id=movie_id,
