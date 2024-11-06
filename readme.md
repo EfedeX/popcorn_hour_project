@@ -1,6 +1,6 @@
 # PopcornHour
 
-PopcornHour is a desktop app for rating movies, with roles for moderators and users. Moderators have permission to upload new movies, while both users and moderators can rate them. This project combines a **FastAPI** backend with **SQLModel** (on a **MySQL** database) and **PySide6** for the frontend.
+PopcornHour is a desktop app develoved with QtCreator (Pyside 6) for rating movies, with roles for moderators and users. Moderators have permission to upload new movies, while both users and moderators can rate them. This project combines a **FastAPI** backend with **SQLModel** (on a **MySQL** database) and **PySide6** for the frontend.
 
 ## Features
 
